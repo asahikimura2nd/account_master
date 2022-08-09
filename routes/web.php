@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AccountMasterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,12 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//管理者ログイン画面
+Route::get('/',[AccountMasterController::class,'user'])->name('index');
+//会員一覧画面
+Route::get('/users',[AccountMasterController::class,'users'])->name('users');
+//新規会員作成(編集)
+Route::get('/users',[AccountMasterController::class,'user'])->name('user');
+// Auth::routes();
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
