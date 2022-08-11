@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AccountMasterController;
+use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,12 +15,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//管理者ログイン画面
-Route::get('/',[AccountMasterController::class,'user'])->name('index');
-//会員一覧画面
-Route::get('/users',[AccountMasterController::class,'users'])->name('users');
-//新規会員作成(編集)
-Route::get('/users',[AccountMasterController::class,'user'])->name('user');
-// Auth::routes();
+//ホーム画面
+// Route::get('/',[AccountMasterController::class,'home'])->name('home');
+//ログイン管理画面
+// Route::get('/profile', function () {
+// // 認証されたユーザーのみがこのルートにアクセスできる
+// })->middleware('auth.basic');
+
+//ログイン管理画面
+Route::get('/',[LoginController::class,'showLogin'])->name('showLogin');
+//ログイン認証
+Route::post('/login',[LoginController::class,'login'])->name('login');
+
+
+// //会員一覧画面
+// Route::get('/users',[AccountMasterController::class,'users'])->name('users');
+// //新規会員作成(編集)
+// Route::get('/users',[AccountMasterController::class,'user'])->name('user');
+// // Auth::routes();
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
