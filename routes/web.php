@@ -15,19 +15,26 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//ホーム画面
-// Route::get('/',[AccountMasterController::class,'home'])->name('home');
+
 //ログイン管理画面
 // Route::get('/profile', function () {
 // // 認証されたユーザーのみがこのルートにアクセスできる
 // })->middleware('auth.basic');
 
-//ログイン管理画面
-Route::get('/',[LoginController::class,'showLogin'])->name('showLogin');
-//ログイン認証
-Route::post('/login',[LoginController::class,'login'])->name('login');
 
+//ログイン前 guest
+Route::group(['middleware'=>['guest']],function(){
+    //ログイン管理画面
+    Route::get('/',[LoginController::class,'showLogin'])->name('showLogin');
+    //ログイン認証
+    Route::post('/login',[LoginController::class,'login'])->name('login');
+});
 
+//ログイン後 auth karnel.php参照
+Route::group(['middleware'=>['auth']],function(){
+    //ホーム画面
+    Route::get('/home',[AccountMasterController::class,'home'])->name('home');
+});
 // //会員一覧画面
 // Route::get('/users',[AccountMasterController::class,'users'])->name('users');
 // //新規会員作成(編集)
