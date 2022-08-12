@@ -22,8 +22,8 @@ class LoginController extends Controller
     
         if (Auth::attempt(($credentials))){
             $request->session()->regenerate();
-            //認証成功時にセッションを返す
-            return redirect('home')->with('login_success','ログインが成功しました');
+            //認証成功時にセッションを返す 二回以上のリダイレクト回避
+            return redirect()->route('home')->with('login_success','ログインが成功しました');
         }
             //認証失敗　エラーの内容をセッションと一緒に返せる
             return back()->withErrors(['login_error'=> 'メールアドレスかパスワード一致しません。']);

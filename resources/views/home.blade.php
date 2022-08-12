@@ -9,20 +9,21 @@
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/signin.css') }}">
 
-    <!-- CSS only -->
-{{-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> --}}
 </head>
 <body class="text-center">
-  @if(session('login_success'))
-    <div>{{session('login_success')}}</div>
-  @endif
-プロフィール
-{{-- userモデルのデータを表示する --}}
-<ul>
-  <li>名前：{{Auth::user()->name}}</li>
-  <li>メールアドレス：{{Auth::user()->email}}</li>
-</ul>
-
-  
+    {{-- ログイン成功 --}}
+    @if(session('login_success'))
+      <div>{{session('login_success')}}</div>
+    @endif
+    プロフィール
+  {{-- userモデルのデータを表示する --}}
+  <ul>
+    <li>名前：{{Auth::user()->name}}</li>
+    <li>メールアドレス：{{Auth::user()->email}}</li>
+  </ul>
+    <form action="{{route('logout')}}" method="POST">
+      @csrf
+      <button class="btn btn-danger">ログアウト</button>
+  </form>
 </body>
 </html>

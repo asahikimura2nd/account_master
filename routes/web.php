@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AccountMasterController;
 use App\Http\Controllers\LoginController;
+use App\Models\AccountMaster;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,12 +17,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//ログイン管理画面
-// Route::get('/profile', function () {
-// // 認証されたユーザーのみがこのルートにアクセスできる
-// })->middleware('auth.basic');
-
-
+/**
+ * @param App\Http\Kernel
+ */
 //ログイン前 guest
 Route::group(['middleware'=>['guest']],function(){
     //ログイン管理画面
@@ -34,6 +32,8 @@ Route::group(['middleware'=>['guest']],function(){
 Route::group(['middleware'=>['auth']],function(){
     //ホーム画面
     Route::get('/home',[AccountMasterController::class,'home'])->name('home');
+    //ログアウト 認証後の処理のため
+    Route::post('/logout',[AccountMasterController::class,'logout'])->name('logout');
 });
 // //会員一覧画面
 // Route::get('/users',[AccountMasterController::class,'users'])->name('users');

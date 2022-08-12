@@ -36,8 +36,13 @@
             </ul>
         </div>
     @endif
+        {{-- ログイン失敗 --}}
     @if(session('login_error'))
     <div>{{session('login_error')}}</div>
+  @endif
+        {{-- ログアウト --}}
+  @if(session('logout'))
+  <div>{{session('logout')}}</div>
   @endif
         <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
       </form>
