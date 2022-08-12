@@ -8,6 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class AccountMaster extends Model
 {
     use HasFactory;
+    protected $fillable = [    
+    'name',
+    'email',
+    'tel',
+    'prefectures',
+    'city',
+    'address_and_building'
+    ];
 
     public function home(){
         
