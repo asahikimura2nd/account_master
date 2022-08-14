@@ -1,8 +1,7 @@
 <?php
 
-use App\Http\Controllers\AccountMasterController;
-use App\Http\Controllers\LoginController;
-use App\Models\AccountMaster;
+use App\Http\Controllers\UserController;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -23,17 +22,22 @@ use Illuminate\Support\Facades\Route;
 //ログイン前 guest
 Route::group(['middleware'=>['guest']],function(){
     //ログイン管理画面
-    Route::get('/',[LoginController::class,'showLogin'])->name('showLogin');
+    Route::get('/',[UserController::class,'showLogin'])->name('showLogin');
     //ログイン認証
-    Route::post('/login',[LoginController::class,'login'])->name('login');
+    Route::post('/login',[UserController::class,'login'])->name('login');
+    //管理者登録画面
+    Route::get('/show/register',[UserController::class,'showRegister'])->name('showRegister');
+    //管理者認証
+    Route::post('/register',[UserController::class,'register'])->name('register');
+
 });
 
 //ログイン後 auth karnel.php参照
 Route::group(['middleware'=>['auth']],function(){
     //ホーム画面
-    Route::get('/home',[AccountMasterController::class,'home'])->name('home');
+    Route::get('/home',[UserController::class,'home'])->name('home');
     //ログアウト 認証後の処理のため
-    Route::post('/logout',[AccountMasterController::class,'logout'])->name('logout');
+    Route::post('/logout',[UserController::class,'logout'])->name('logout');
 });
 // //会員一覧画面
 // Route::get('/users',[AccountMasterController::class,'users'])->name('users');
