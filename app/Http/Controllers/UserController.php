@@ -20,7 +20,8 @@ class UserController extends Controller
         if (Auth::attempt(($credentials))){
             $request->session()->regenerate();
             //認証成功時にセッションを返す 二回以上のリダイレクト回避
-            return redirect()->route('home')->with('login_success','ログインが成功しました');
+            return redirect()->route('home');
+            // ->with('login_success','ログインが成功しました');
         }
             //認証失敗 エラーの内容をセッションと一緒に返せる
             return back()->withErrors(['login_error'=> 'メールアドレスかパスワード一致しません。']);
@@ -50,8 +51,9 @@ class UserController extends Controller
         //保存処理
 
      }
-     public function logout(LoginRequest $request)
+     public function logout(Request $request)
      {
+        // dd('aaa');
          //ログアウト
         Auth::logout();
          //セッション削除
@@ -59,10 +61,12 @@ class UserController extends Controller
          //再生成
         $request->session()->regenerateToken();
          //連打による二回以上送信の回避
+         
          return redirect()->route('showLogin')->with('logout','ログアウトしました。');
      }
 
      public function home(){
+       
         return view('home');
     }
     }
