@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Support\Facades\Auth;
-
-
-
-use Illuminate\Http\Request;
-// https://readouble.com/laravel/8.x/ja/authentication.html
-// https://qiita.com/mpyw/items/c944d4fcbb45c1a3924c
-
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
@@ -18,7 +14,7 @@ class UserController extends Controller
         return view('login_form');
     }
     
-    public function login(UserRequest $request ){
+    public function login(LoginRequest $request ){
         $credentials = $request->only('email','password');
     
         if (Auth::attempt(($credentials))){
@@ -34,21 +30,27 @@ class UserController extends Controller
      {
         return view('register_form');
      }
-
-     public function Register(UserRequest $request){
+     //登録画面
+     public function register(UserRequest $request){
         // dd($request->all());
         $register = $request->all();
         $password = $register['password'];
         $confirmPassword = $register['confirmPassword'];
 
         if($password === $confirmPassword){
+            //ハッシュ化
+            $register['password'] = bcrypt($register['password']);
+            $admin = new User;
+            $admin->fill($register)->save();
             return redirect()->route('showLogin')->with('register_success','登録完了しました。');
         }
       
         return redirect();
 
+        //保存処理
+
      }
-     public function logout(Request $request)
+     public function logout(LoginRequest $request)
      {
          //ログアウト
         Auth::logout();

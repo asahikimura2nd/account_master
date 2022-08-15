@@ -18,7 +18,7 @@
     プロフィール
   {{-- userモデルのデータを表示する --}}
   <ul>
-    <li>名前：{{Auth::user()->name}}</li>
+    {{-- <li>名前：{{Auth::user()->name}}</li> --}}
     <li>メールアドレス：{{Auth::user()->email}}</li>
   </ul>
     <form action="{{route('logout')}}" method="POST">
