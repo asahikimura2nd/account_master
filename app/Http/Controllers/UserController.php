@@ -3,15 +3,20 @@
 namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\LoginRequest;
+use App\Http\Requests\MemberRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
     public function showLogin(){
+    
+        // dd($members);
         return view('login_form');
+
     }
     
     public function login(LoginRequest $request ){
@@ -47,14 +52,10 @@ class UserController extends Controller
         }
       
         return redirect();
-
-        //保存処理
-
      }
+     //ログアウト
      public function logout(Request $request)
      {
-        // dd('aaa');
-         //ログアウト
         Auth::logout();
          //セッション削除
         $request->session()->invalidate();
@@ -64,9 +65,40 @@ class UserController extends Controller
          
          return redirect()->route('showLogin')->with('logout','ログアウトしました。');
      }
-
+        //ホーム
      public function home(){
-       
         return view('home');
     }
+        // 会員一覧画面
+    public function users(){
+        $members = DB::table('users')->get();
+
+    return view('users',["members"=> $members]);
     }
+   
+    //会員登録
+    public function showUser(){
+        return view('user_form');
+    }
+
+    //会員登録処理
+    public function user(MemberRequest $request){
+        $attributes = $request ->all();
+        dd($attributes);
+        $member = new User;
+        $member -> fill($attributes) -> save();
+        return redirect()->route('users')->with('member_success','登録完了しました');
+    }
+
+    
+    
+    
+    
+    
+    }
+
+
+
+
+
+
