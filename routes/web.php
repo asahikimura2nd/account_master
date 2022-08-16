@@ -36,13 +36,16 @@ Route::group(['middleware'=>['guest']],function(){
 Route::group(['middleware'=>['auth']],function(){
     //ホーム画面
     Route::get('/home',[UserController::class,'home'])->name('home');
-    //ログアウト 認証後の処理のため
+    //ログアウト
     Route::post('/logout',[UserController::class,'logout'])->name('logout');
-});
-// //会員一覧画面
-// Route::get('/users',[AccountMasterController::class,'users'])->name('users');
-// //新規会員作成(編集)
-// Route::get('/users',[AccountMasterController::class,'user'])->name('user');
-// // Auth::routes();
+// //会員登録一覧
+    Route::get('/users',[UserController::class,'users'])->name('users');
+    //新規会員作成（編集）
+    Route::get('/show/user',[UserController::class,'showUser'])->name('showUser');
+    //登録処理
+    Route::post('/user',[UserController::class,'user'])->name('user');
+    //
+    
 
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+});

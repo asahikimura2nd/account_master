@@ -124,6 +124,10 @@ return [
     'uploaded'             => ':attributeのアップロードに失敗しました。',
     'url'                  => ':attributeに正しい形式を指定してください。',
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
+    
+    //追記
+    'user_postcode'        => ':attributeは半角英数字で入力してください。',
+    'user_tel'             => ':attributeは半角英数字で入力してください。',
 
     /*
     |--------------------------------------------------------------------------
@@ -135,7 +139,7 @@ return [
     | カスタム言語行を手早く指定できます。
     |
     */
-
+    
     'custom' => [
         '属性名' => [
             'ルール名' => 'カスタムメッセージ',
@@ -154,6 +158,19 @@ return [
     */
 
     'attributes' => [
+  
+        'user_company'=>'会社名',
+        'user_name_katakana'=>'フリガナ', 
+        'user_email'=>'メールアドレス',
+        'user_password'=>'パスワード',
+        'user_tel' =>'電話番号',
+        'user_postcode'=>'郵便番号', 
+        'user_prefectures'=>'都道府県',
+        'user_city'=>'市区町村',
+        'user_address_and_building'=>'番号・アパート名',
+        'content'=>'備考欄',
+
+
 
     ],
 

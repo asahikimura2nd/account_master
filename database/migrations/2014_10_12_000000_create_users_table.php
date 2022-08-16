@@ -23,12 +23,20 @@ class CreateUsersTable extends Migration
             $table->string('password')->nullable();
             // $table->rememberToken();
             //お問い合わせ
+            
+            $table->string('user_id')->nullable();
             $table->string('user_name')->nullable();
             $table->string('user_email')->nullable();
             $table->string('user_tel')->nullable();
             $table->string('user_prefectures')->nullable();
             $table->string('user_city')->nullable();
             $table->string('user_address_and_building')->nullable();
+            //詳細
+            $table->string('user_company')->nullable();
+            $table->string('user_name_katakana')->nullable();
+            $table->string('user_password')->nullable();
+            $table->string('user_postcode')->nullable();
+            $table->text('content')->nullable();
             $table->timestamps();
         });
     }

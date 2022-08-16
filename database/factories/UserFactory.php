@@ -15,18 +15,26 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
-            'email' => $this->faker->unique()->safeEmail(),
-            // 'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            // 'remember_token' => Str::random(10),
-            'user_name'=> '',
-            'user_email'=> '',
-            'user_tel'=> '',
-            'user_prefectures'=> '',
-            'user_city'=> '',
-            'user_address_and_building'=> ''
+
+            // 'email' => $this->faker->unique()->safeEmail(),
+            'user_id'=>$this->faker->uuid(),
+            'user_name'=>$this->faker->lastName(),
+            'user_email'=>$this->faker->email(),
+            // 'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
+            'user_tel'=>$this->faker->phoneNumber(),
+            'user_prefectures'=>$this->faker->city(),
+            'user_city'=>$this->faker->streetAddress(),
+            'user_address_and_building'=>$this->faker->buildingNumber(),
+            //詳細
+            'user_company'=>$this->faker->company(),
+            'user_name_katakana'=>$this->faker->lastName(),
+            'user_password'=>$this->faker->lastName(),
+            'user_postcode'=>$this->faker->postcode(),
+            'content'=>$this->faker->text(),
+            
         ];
+            
+        
     }
 
     /**
