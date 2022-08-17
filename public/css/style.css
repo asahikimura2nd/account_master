@@ -1,0 +1,71 @@
+
+html{
+  max-width: 100%;
+  height: auto;
+}
+body{
+  width: 98%;
+  margin: auto;
+  background-color: rgb(24, 175, 24);
+}
+
+header{
+
+  width: 100%;
+  height: 80px;
+  background-color: white;
+  display: flex;
+  justify-content: right;
+  align-items: center;
+
+}
+.admin{
+  display: block;
+  padding: 10px 10px 10px 0;
+}
+
+.logoutForm{
+  display: block;
+  padding: 10px 10px 10px 0;
+}
+.logoutButton{
+background-color: aquamarine;
+}
+
+.sideBar{
+  width: 30%;
+  background-color: bisque;
+  height: 100vh;
+}
+.hambarger{
+  display: flex;
+  justify-content: flex-end;
+
+}
+.home{
+  display: flex;
+  justify-content:left;
+  align-items:center;
+  border-bottom: 1px solid white;
+}
+.members{
+  display: flex;
+  justify-content:left;
+  align-items: center;
+  border-bottom: 1px solid white;
+}
+.menuIcon{
+  width: 40px;
+  display: block;
+  margin: 10px 10px 10px 0;
+}
+.homeIcon{
+width: 40px;  
+display: block;
+  margin: 10px 10px 10px 0;
+}
+.membersIcon{
+  width: 40px;
+  display: block;
+  margin: 10px 10px 10px 0;
+}
