@@ -7,7 +7,7 @@ use App\Rules\postcode_check;
 use App\Rules\tel_check;
 
 
-class MemberRequest extends FormRequest
+class EditMemberRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -30,7 +30,7 @@ class MemberRequest extends FormRequest
         //メンバー登録フォーム
         'user_company'=>'required|max:30',
         'user_name_katakana'=>'required|max:30',
-        //重複なし
+        //重複なし→自分以外のメールアドレス以外
         'user_email'=>'required|unique:users,user_email',
         'user_password'=>'required|min:8',
 

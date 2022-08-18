@@ -38,7 +38,6 @@
         </div>
       </div>
     </div>
-   
  
     <div class="mainContainer">    
       <div>HOME</div>

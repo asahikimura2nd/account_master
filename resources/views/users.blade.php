@@ -29,7 +29,7 @@
         <td>    
           @foreach ($members as $member)
             <pre>
-            {{$member->user_id}}
+            <a href="{{ route('showEdit',['user_id' => $member->user_id]) }}">{{$member->user_id}}</a>
             <pre>
             @endforeach
         </td>

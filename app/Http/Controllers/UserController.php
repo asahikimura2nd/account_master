@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\MemberRequest;
+use App\Http\Requests\EditMemberRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Laravel\Ui\Presets\React;
 
 class UserController extends Controller
 {
@@ -72,6 +74,7 @@ class UserController extends Controller
         // 会員一覧画面
     public function users(){
         $members = DB::table('users')->get();
+        // dd($members);
 
     return view('users',["members"=> $members]);
     }
@@ -84,17 +87,27 @@ class UserController extends Controller
     //会員登録処理
     public function user(MemberRequest $request){
         $attributes = $request ->all();
-        dd($attributes);
+        // dd($attributes);
         $member = new User;
         $member -> fill($attributes) -> save();
         return redirect()->route('users')->with('member_success','登録完了しました');
     }
 
-    
-    
-    
-    
-    
+    //会員編集画面
+    public function showEdit($user_id){
+        // dd($user_id);
+        $editMember = User::where('user_id',$user_id)->first();
+        // dd($editMember);
+        return view('user_edit_form',['editMember'=> $editMember]);
+    }
+        //会員登録処理(編集)
+        public function editUser(EditMemberRequest $request){
+            $attributes = $request ->all();
+            // dd($attributes);
+            $member = new User;
+            $member -> fill($attributes) -> save();
+            return redirect()->route('users')->with('member_success','再登録完了しました');
+        }
     }
 
 

@@ -40,11 +40,14 @@ Route::group(['middleware'=>['auth']],function(){
     Route::post('/logout',[UserController::class,'logout'])->name('logout');
 // //会員登録一覧
     Route::get('/users',[UserController::class,'users'])->name('users');
-    //新規会員作成（編集）
+    //新規会員作成
     Route::get('/show/user',[UserController::class,'showUser'])->name('showUser');
     //登録処理
     Route::post('/user',[UserController::class,'user'])->name('user');
-    //
+    //会員編集
+    Route::get('/show/edit/{user_id?}',[UserController::class,'showEdit'])->name('showEdit');
+     //再登録処理
+     Route::post('/user/edit',[UserController::class,'editUser'])->name('editUser');
     
 
 
