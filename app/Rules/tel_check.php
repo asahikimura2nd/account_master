@@ -25,8 +25,8 @@ class tel_check implements Rule
      */
     public function passes($attribute, $value)
     {
-        //
-        return preg_match('/^[0-9]{11}$/',$value);
+        
+        return preg_match('/^[0-9]{2,4}-[0-9]{2,4}-[0-9]{3,4}$/',$value);
     }
 
     /**
