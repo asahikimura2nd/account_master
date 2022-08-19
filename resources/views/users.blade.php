@@ -16,7 +16,6 @@
     <thead>
     <tr>
       <th>編集</th>
-      <th>名前</th>
       <th>メールアドレス</th>
       <th>電話番号</th>
       <th>都道府県</th>
@@ -33,13 +32,13 @@
             <pre>
             @endforeach
         </td>
-        <td>    
+        {{-- <td>    
           @foreach ($members as $member)
             <pre>
             {{$member->user_name}}
             <pre>
             @endforeach
-        </td>
+        </td> --}}
         <td>    
           @foreach ($members as $member)
             <pre>

@@ -1,18 +1,17 @@
 
 html{
-  max-width: 100%;
-  height: auto;
+  width: 100%;
+  height: 100%;
 }
 body{
   width: 100%;
   margin: auto;
-  background-color: rgb(24, 175, 24);
+  /* background-color: rgb(24, 175, 24); */
 }
-
-main{
-  display: flex;
-  width: 98%;
-}
+ /**
+ *
+ 
+ */
 header{
   width: 100%;
   height: 80px;
@@ -35,10 +34,50 @@ header{
 background-color: aquamarine;
 }
 
+ /**
+ *
+ 
+ */
+
+
+main{
+  display: flex;
+  width: 100%;
+  /* background-color: chocolate; */
+}
 .sideBar{
   width: 30%;
   background-color: bisque;
   height: 100vh;
+}
+
+.mainContainer{
+  background-color: blue;
+  display: block;
+  /* width: calc(100%-side); */
+  /* margin: 50px; */
+  width: 70%;
+  padding: 10px 0 0 40px;
+}
+/* .title{
+  
+  padding-left: 20px -30px
+
+} */
+.backImage{
+margin: 60px;
+background-color: blueviolet;
+height:80% ;
+display: block;
+}
+
+.innerContainer{
+  background-color: azure;
+  display: block;
+  padding:50px ;
+  width: 80%;
+  height: 80px;
+  line-height: 1.5;
 }
 .hambarger{
   display: flex;
@@ -72,3 +111,4 @@ display: block;
   display: block;
   margin: 10px 10px 10px 0;
 }
+

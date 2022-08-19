@@ -31,7 +31,7 @@
       <br>
       <label for="user_password">パスワード：必須<br>
         <input type="password" name="user_password" id="user_password" value="{{ old('user_password',$editMember->user_password) }}" >
-      <</label>
+      </label>
       <br>
       <label for="user_tel">電話番号：必須<br>
         <input type="text" name="user_tel" id="user_tel" value="{{ old('user_tel',$editMember->user_tel)}}">
