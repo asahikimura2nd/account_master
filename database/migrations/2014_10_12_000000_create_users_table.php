@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
 
             //管理者
             // $table->string('name',100)->nullable();
-            $table->string('email')->unique()->nullable();
+            $table->string('admin_email')->unique()->nullable();
             // $table->timestamp('email_verified_at')->nullable();
             $table->string('password')->nullable();
             // $table->rememberToken();
@@ -36,7 +36,23 @@ class CreateUsersTable extends Migration
             $table->string('user_name_katakana')->nullable();
             $table->string('user_password')->nullable();
             $table->string('user_postcode')->nullable();
-            $table->text('content')->nullable();
+            $table->text('user_content')->nullable();
+            
+
+            /**
+             * 
+             * お問い合わせ側(user)
+             * 
+             */
+            $table->string('contact_id')->nullable();
+            $table->string('company',20)->nullable();
+            $table->string('name',20)->nullable();
+            $table->string('tel')->nullable(); //https://webukatu.com/questions/detail/ec2c60b8195ea2b4ac9901a24777d1cf/
+            $table->string('email')->nullable();
+            $table->date('birth_date')->nullable();//https://code-kitchen.dev/html/input-date/#%E6%97%A5%E4%BB%98%E3%81%AE%E5%80%A4%E3%81%AF%E3%81%A9%E3%82%93%E3%81%AA%E5%BD%A2%E5%BC%8F%E3%81%AB%E3%81%AA%E3%81%A3%E3%81%A6%E3%82%8B%EF%BC%9F
+            $table->string('gender')->nullable();
+            $table->string('job')->nullable();
+            $table->string('content')->nullable();
             $table->timestamps();
         });
     }

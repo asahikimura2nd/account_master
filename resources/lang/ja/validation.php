@@ -158,7 +158,9 @@ return [
     */
 
     'attributes' => [
-  
+        'admin_email'=>'メールアドレス',
+        'password'=>'パスワード',
+        
         'user_company'=>'会社名',
         'user_name_katakana'=>'フリガナ', 
         'user_email'=>'メールアドレス',

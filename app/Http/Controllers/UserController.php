@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\LoginRequest;
 use App\Http\Requests\MemberRequest;
+use App\Http\Requests\TestRequest;
 use App\Http\Requests\EditMemberRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
+
 
 class UserController extends Controller
 {
@@ -22,7 +24,7 @@ class UserController extends Controller
     }
     
     public function login(LoginRequest $request ){
-        $credentials = $request->only('email','password');
+        $credentials = $request->only('admin_email','password');
     
         if (Auth::attempt(($credentials))){
             $request->session()->regenerate();
@@ -100,18 +102,66 @@ class UserController extends Controller
         // dd($editMember);
         return view('user_edit_form',['editMember'=> $editMember]);
     }
-        //会員登録処理(編集)
-        public function editUser(EditMemberRequest $request){
-            $attributes = $request ->all();
-            // dd($attributes);
-            $member = new User;
-            $member -> fill($attributes) -> save();
-            return redirect()->route('users')->with('member_success','再登録完了しました');
+    //会員登録処理(編集)
+     public function editUser(EditMemberRequest $request){
+        $attributes = $request ->all();
+        // dd($attributes);
+        $member = new User;
+        $member -> fill($attributes) -> save();
+        return redirect()->route('users')->with('member_success','再登録完了しました');
+     }
+        //お問い合わせ一覧画面
+        public function showContacts(){
+            $contacts = DB::table('users')->get();
+            // dd($members);
+    
+        return view('showContacts',["contacts"=> $contacts]);
         }
+        
+        
+        //お問い合わせ編集画面
+        public function showEditContact($contact_id){
+            // dd($contact_id);
+            $editContact = User::where('contact_id',$contact_id)->first();
+            // dd($editContact);
+            return view('edit_contact_form',['editContact'=> $editContact]);
+        }
+    /**
+     * 
+     * お問い合わせ側（user）
+     * 
+     * 
+     */
+        public function form(){
+            return view('form');
     }
 
+        public function confirm(TestRequest $request){
+            $forms=$request->all();
+
+            // dd($forms);
+            session()->put('forms', $forms);
+            return view('confirm',['forms'=>$forms]);
+        }
 
 
-
+        public function send(){
+            $forms = session()->get('forms');
+            $formData = new User;
+            $formData->fill($forms)->save();
+            // $company = $forms['company'];
+            // $name = $forms['name'];
+            // $tel= $forms['tel'];
+            // $email = $forms['email'];
+            //  $birth_date = $forms['birth_date'];
+            //  $gender = $forms['gender'];
+            // $job = $forms['job'];
+            // $content = $forms['content'];
+            // Mail::send(new FormMail($company,$name,$tel,$email,$birth_date,$gender,$job,$content));
+            
+        return view('send',['forms'=>$forms]);
+    }    
+        
+}
 
 

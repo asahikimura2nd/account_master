@@ -23,7 +23,7 @@ class User extends Authenticatable
 
     protected $fillable = [
         //管理者
-        'email',
+        'admin_email',
         'password',
         //会員一覧
         'user_id',
@@ -38,7 +38,23 @@ class User extends Authenticatable
         'user_name_katakana',
         'user_password',
         'user_postcode',
-        'content',
+        'user_content',
+
+
+        /**
+         * 
+         * お問い合わせ側(user)
+         * 
+         */
+        'contact_id',
+        'company',
+        'name',
+        'tel',
+        'email',
+        'birth_date',
+        'gender',
+        'job',
+        'content'
     ];
 
 

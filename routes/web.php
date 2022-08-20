@@ -29,8 +29,20 @@ Route::group(['middleware'=>['guest']],function(){
     Route::get('/show/register',[UserController::class,'showRegister'])->name('showRegister');
     //管理者認証
     Route::post('/register',[UserController::class,'register'])->name('register');
-
+/**
+ * 
+ * 
+ * お問い合わせ側（user）
+ */
+    //お問い合わせ
+    Route::get('/contact',[UserController::class,'form'])->name('form');
+    //確認ページ
+    Route::post('/contact/form/confirm',[UserController::class,'confirm'])->name('confirm');
+    //送信完了ページ
+    Route::get('/contact/form/send',[UserController::class,'send'])->name('send');
 });
+
+
 
 //ログイン後 auth karnel.php参照
 Route::group(['middleware'=>['auth']],function(){
@@ -38,7 +50,7 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/home',[UserController::class,'home'])->name('home');
     //ログアウト
     Route::post('/logout',[UserController::class,'logout'])->name('logout');
-// //会員登録一覧
+    //会員登録一覧
     Route::get('/users',[UserController::class,'users'])->name('users');
     //新規会員作成
     Route::get('/show/user',[UserController::class,'showUser'])->name('showUser');
@@ -48,7 +60,8 @@ Route::group(['middleware'=>['auth']],function(){
     Route::get('/show/edit/{user_id?}',[UserController::class,'showEdit'])->name('showEdit');
      //再登録処理
      Route::post('/user/edit',[UserController::class,'editUser'])->name('editUser');
-    
-
-
-});
+     //お問い合わせ一覧
+     Route::get('/show/contacts',[UserController::class,'showContacts'])->name('showContacts');
+    //お問い合わせ編集画面
+    Route::get('/show/edit/contact/{contact_id?}',[UserController::class,'showEditContact'])->name('showEditContact');
+    });

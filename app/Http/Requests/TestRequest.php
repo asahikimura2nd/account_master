@@ -2,9 +2,10 @@
 
 namespace App\Http\Requests;
 
+use App\Rules\TelRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class LoginRequest extends FormRequest
+class TestRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -23,10 +24,19 @@ class LoginRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'admin_email'=>'required|max:255',
-            'password'=>'required',
-            // 'confirmPassword' => 'required|same:password'
+        
+        return 
+        [
+            'company' =>'required|max:20',
+            'name'=>'required|max:20',
+            'tel' => ['required', new TelRule], 
+            'email'=> 'required|email',
+            'birth_date'=>'required',
+            'gender'=> 'required',
+            'job' => 'required',
+            'content' => 'required',
         ];
     }
+
+
 }

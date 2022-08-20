@@ -40,7 +40,7 @@ class MemberRequest extends FormRequest
         'user_prefectures'=>'required',
         'user_city'=>'required|max:30',
         'user_address_and_building'=>'required|max:50',
-        'content'=> 'max:255',
+        'user_content'=> 'max:255',
         ];
     }
 }
