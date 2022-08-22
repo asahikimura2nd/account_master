@@ -110,12 +110,16 @@ class UserController extends Controller
         $member -> fill($attributes) -> save();
         return redirect()->route('users')->with('member_success','再登録完了しました');
      }
-        //お問い合わせ一覧画面
-        public function showContacts(){
-            $contacts = DB::table('users')->get();
-            // dd($members);
-    
-        return view('showContacts',["contacts"=> $contacts]);
+    //お問い合わせ一覧画面
+    public function showContacts(){
+        
+        // https://readouble.com/laravel/6.x/ja/pagination.html
+        $contacts = User::where('contact_id','!=',null)->paginate(1);   
+         
+        // dd($contacts);
+        $contacts->withPath('/show/contacts/');
+        
+        return view('showContacts',['contacts'=>$contacts]);
         }
         
         
@@ -124,6 +128,7 @@ class UserController extends Controller
             // dd($contact_id);
             $editContact = User::where('contact_id',$contact_id)->first();
             // dd($editContact);
+            
             return view('edit_contact_form',['editContact'=> $editContact]);
         }
     /**

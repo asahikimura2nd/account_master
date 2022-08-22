@@ -58,13 +58,17 @@
           @foreach ($contacts as $contact)
             <pre>
             {{$contact->tel}}
+          
             <pre>
             @endforeach
         </td>
       </tr>
     </tbody>
   </table>
-
+  
+  {{-- {{ dd($data->links()) }} --}}
+  {{-- {{dd($contacts)}} --}}
+  {{ $contacts->links() }}
 </body>
 
 </html>
