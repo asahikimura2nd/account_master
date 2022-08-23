@@ -10,58 +10,48 @@
     {{-- <link rel="stylesheet" href="{{ asset('/css/signin.css') }}"> --}}
 </head>
 <body >
-  {{dd($editContact)}}
+  {{-- {{dd($editContact)}} --}}
   <h1>お問い合わせ編集</h1>
 
   {{-- @foreach ($errors->all() as $error)
   <li>{{$error}}</li>
 @endforeach --}}
-  {{-- <form action="{{route('user')}}" method="POST">
+  <form action="{{route('contactEdit')}}" method="POST">
     @csrf
-      <label for="user_company">会社名：必須<br>
-        <input type="text" name="user_company" id="user_company" value="{{ old('user_company',$editMember->user_company) }}">
+    ステータス
+      <input type="hidden" name="contact_id" value="{{$editContact->contact_id}}">
+     {{-- {{dd($editContact->contact_id)}}; --}}
+      <select name="status">
+        <option value="未対応" @if(old('status')==="未対応") selected @endif>未対応</option>
+        <option value="対応中" @if(old('status')==="対応中") selected @endif>対応中</option>
+        <option value="対応済み" @if(old('status')==="対応済み") selected @endif>対応済み</option>
+    </select>
+    <br>
+      お問い合わせ内容
+      <br>
+      {{$editContact->content}}
+      <br>
+      <label for="remarks">備考<br>
+        <textarea name="remarks" id="remarks" cols="30" rows="10">{{old('remarks',$editContact->remarks)}}</textarea>  
       </label>
       <br>
-      <label for="user_name_katakana">フリガナ：必須<br>
-        <input type="text" name="user_name_katakana" id="user_name_katakana" value="{{ old('user_name_katakana',$editMember->user_name_katakana) }}">
-      </label>
+      お問い合わせ情報
+      氏名：{{$editContact->name}}
       <br>
-      <label for="user_email">メールアドレス：必須<br>
-        <input type="email" name="user_email" id="user_email" value="{{ old('user_email',$editMember->user_email) }}">
-      </label>
+      電話番号：{{$editContact->tel}}
       <br>
-      <label for="user_password">パスワード：必須<br>
-        <input type="password" name="user_password" id="user_password" value="{{ old('user_password',$editMember->user_password) }}" >
-      </label>
+      メールアドレス：{{$editContact->email}}
       <br>
-      <label for="user_tel">電話番号：必須<br>
-        <input type="text" name="user_tel" id="user_tel" value="{{ old('user_tel',$editMember->user_tel)}}">
-      </label>
+      生年月日：{{$editContact->birth_date}}
       <br>
-      <label for="user_postcode">郵便番号：必須<br>
-        <input type="text" name="user_postcode" id="user_postcode" value="{{ old('user_postcode',$editMember->user_postcode) }}">
-      </label>
+      性別：{{$editContact->gender}}
       <br>
-      <label for="user_prefectures">都道府県：必須<br>
-        <input type="text" name="user_prefectures" id="user_prefectures" value="{{ old('user_prefectures',$editMember->user_prefectures) }}">
-      </label>
-      <br>
-      <label for="user_city">市区町村：必須<br>
-        <input type="text" name="user_city" id="user_city" value="{{ old('user_city',$editMember->user_city) }}">
-      </label>
-      <br>
-      <label for="user_address_and_building">番号・アパート：必須<br>
-        <input type="text" name="user_address_and_building" id="user_address_and_building" value="{{ old('user_address_and_building',$editMember->user_address_and_building)}}">
-      </label>
-      <br>
-      <label for="content">備考欄：必須<br>
-        <textarea name="content" id="content" cols="30" rows="10">{{ old('content',$editMember->content) }}</textarea>
-      </label>
+      職業：{{$editContact->job}}
       <br>
       <input type="submit" value="登録する。">
 
   </form>
- --}}
+
 
 </body>
 

@@ -39,7 +39,10 @@ class User extends Authenticatable
         'user_password',
         'user_postcode',
         'user_content',
-
+        //対応状況
+        'status',
+        //お問い合わせ備考
+        'remarks',
 
         /**
          * 

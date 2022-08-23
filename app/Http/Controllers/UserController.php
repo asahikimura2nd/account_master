@@ -110,6 +110,7 @@ class UserController extends Controller
         $member -> fill($attributes) -> save();
         return redirect()->route('users')->with('member_success','再登録完了しました');
      }
+
     //お問い合わせ一覧画面
     public function showContacts(){
         
@@ -131,7 +132,14 @@ class UserController extends Controller
             
             return view('edit_contact_form',['editContact'=> $editContact]);
         }
-    /**
+        //お問い合わせ編集処理
+        public function contactEdit(Request $request){
+            // dd($request);
+            User::where('contact_id',$request->contact_id)->update(['remarks'=> $request->remarks,'status'=> $request->status]);
+            return redirect()->route('showContacts')->with('flash_message','変更を更新しました。');
+        }
+   
+        /**
      * 
      * お問い合わせ側（user）
      * 

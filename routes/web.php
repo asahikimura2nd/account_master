@@ -65,3 +65,6 @@ Route::group(['middleware'=>['auth']],function(){
     //お問い合わせ編集画面
     Route::get('/show/edit/contact/{contact_id?}',[UserController::class,'showEditContact'])->name('showEditContact');
     });
+    //編集処理
+    Route::post('contact/edit/{contact_id?}',[UserController::class,'contactEdit'])->name('contactEdit');
+    

@@ -11,6 +11,9 @@
 </head>
 <body >
 
+  @if (session('flash_message'))
+      {{ session('flash_message') }}
+  @endif
 
   <table>
     <thead>
@@ -34,15 +37,14 @@
         <td>
           @foreach ($contacts as $contact)
             <pre>
-            {{$contact->company}}
+              {{$contact->status}}
             <pre>
             @endforeach
         </td>
         <td>
-        {{-- ステータスに変更予定 --}}
         @foreach ($contacts as $contact)
         <pre>
-        {{$contact->company}}
+          {{$contact->company}}
         <pre>
         @endforeach
         </td>
@@ -66,8 +68,7 @@
     </tbody>
   </table>
   
-  {{-- {{ dd($data->links()) }} --}}
-  {{-- {{dd($contacts)}} --}}
+
   {{ $contacts->links() }}
 </body>
 

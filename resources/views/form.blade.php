@@ -13,6 +13,7 @@
     
     <form action="{{ route('confirm') }}" method="POST">
     @csrf
+    <input type="hidden" name="status" value="未対応">
     <input type="hidden" name="contact_id" value="{{Str::random(30);}}">
     <div class="container">
         <div class="row">

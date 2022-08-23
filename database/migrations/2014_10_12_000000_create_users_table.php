@@ -37,6 +37,11 @@ class CreateUsersTable extends Migration
             $table->string('user_password')->nullable();
             $table->string('user_postcode')->nullable();
             $table->text('user_content')->nullable();
+
+            //顧客対応状況
+            $table->string('status')->nullable();
+            //顧客お問い合わせ備考
+            $table->string('remarks')->nullable();
             
 
             /**
