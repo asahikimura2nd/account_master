@@ -1,11 +1,17 @@
-@extends('common.layout')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>会員作成フォーム</title>
+    <script src="{{ asset('/js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('/css/signin.css') }}"> --}}
+</head>
+<body >
 
-@section('title','会員登録')
-
-@section('content')
-
-
-  <h1>会員登録フォーム</h1>
+  <h1>会員作成フォーム</h1>
   @foreach ($errors->all() as $error)
   <li>{{$error}}</li>
 @endforeach
@@ -55,4 +61,8 @@
       <input type="submit" value="登録する。">
 
   </form>
-@endsection
+
+
+</body>
+
+</html>

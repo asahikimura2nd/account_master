@@ -6,6 +6,7 @@ html{
 body{
   width: 100%;
   margin: auto;
+  position: relative;
   /* background-color: rgb(24, 175, 24); */
 }
  /**
@@ -19,6 +20,7 @@ header{
   display: flex;
   justify-content: right;
   align-items: center;
+  position: fixed;
 
 }
 .admin{
@@ -34,36 +36,65 @@ header{
 background-color: aquamarine;
 }
 
- /**
- *
- 
- */
 
 
 main{
   display: flex;
   width: 100%;
+  
   /* background-color: chocolate; */
 }
 .sideBar{
   width: 30%;
   background-color: bisque;
   height: 100vh;
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  transition-duration:0.4s;
+  transition-timing-function:ease-in-out
+}
+.sideBar.active{
+  width: 50px;
+  background-color: bisque;
+  height: 100vh;
+  position: absolute;
+  left: 0px;
+  top: 0px;
 }
 
 .mainContainer{
   background-color: blue;
   display: block;
+  height: 100vh;
   /* width: calc(100%-side); */
   /* margin: 50px; */
   width: 70%;
   padding: 10px 0 0 40px;
+  position:absolute;
+  top:80px;
+  left:30%;
+  transition-duration:0.4s;
+  transition-timing-function:ease-in-out
 }
-/* .title{
-  
-  padding-left: 20px -30px
 
-} */
+.mainContainer.active{
+  background-color: blue;
+  display: block;
+  height: 100vh;
+  /* width: calc(100%-side); */
+  /* margin: 50px; */
+  width: 100%;
+  padding: 10px 0 0 40px;
+  position:absolute;
+  top:80px;
+  left:50px;
+}
+.title{
+  
+  padding: 20px 30px;
+
+}
 .backImage{
 margin: 60px;
 background-color: blueviolet;
@@ -72,18 +103,28 @@ display: block;
 }
 
 .innerContainer{
-  background-color: azure;
+  background-color: rgb(37, 98, 98);
   display: block;
   padding:50px ;
-  width: 80%;
-  height: 80px;
+  width: 90%;
+  height: 80%;
   line-height: 1.5;
 }
 .hambarger{
   display: flex;
   justify-content: flex-end;
-
 }
+.items.active{
+  visibility: hidden;
+}
+
+
+.active{
+  transition-duration:0.4s;
+  transition-timing-function:ease-in-out
+}
+
+
 .home{
   display: flex;
   justify-content:left;
@@ -100,6 +141,7 @@ display: block;
   width: 40px;
   display: block;
   margin: 10px 10px 10px 0;
+  cursor: pointer;
 }
 .homeIcon{
 width: 40px;  
