@@ -13,7 +13,7 @@
 </head>
 <body class="text-center">
   <header>
-    <div class="admin">管理者：{{Auth::user()->email}}
+    <div class="admin"><span>管理者：{{Auth::user()->admin_email}}</span>
       <form action="{{route('logout')}}" method="POST" class="logoutForm">
         @csrf
         <button class="logoutButton" type="submit">ログアウト</button>
@@ -48,7 +48,10 @@
     </div>
  
     <div class="mainContainer" id="mainContainer">   
-      <div class="title">HOME</div>      
+      <div class="title"><h1>@yield('main')</h1>
+        <div class="newCreate">@yield('newCreate')</div>
+      </div>      
+      
       <div class="backImage">
 
           <div class="innerContainer">

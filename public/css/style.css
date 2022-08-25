@@ -2,26 +2,57 @@
 html{
   width: 100%;
   height: 100%;
+
 }
 body{
   width: 100%;
   margin: auto;
   position: relative;
-  /* background-color: rgb(24, 175, 24); */
+  font-family: "Helvetica Neue",
+  Arial,
+  "Hiragino Kaku Gothic ProN",
+  "Hiragino Sans",
+  /* Meiryo, */
+  sans-serif;
+  box-sizing: border-box;
+  
+
+}
+h1{
+  font-size: 48px;
+}
+h2{
+  font-size: 32px; 
+  color: rgba(0, 0, 0, 1);
+}
+/* .item{
+  color: rgba(0, 0, 0, 1);
+} */
+p{
+  font-size: 14px;
+}
+span{
+  
+ font-weight: bold; 
+}
+a{
+  font-weight: bold;
 }
  /**
  *
  
  */
 header{
+ 
   width: 100%;
   height: 80px;
-  background-color: white;
+  background-color: rgb(138, 161, 204);
+  box-shadow: 4px 4px 4px ;
   display: flex;
   justify-content: right;
   align-items: center;
   position: fixed;
-
+  z-index: 10;
 }
 .admin{
   display: block;
@@ -34,6 +65,9 @@ header{
 }
 .logoutButton{
 background-color: aquamarine;
+font-weight: bold; 
+border-radius: 40%;
+padding: 5px;
 }
 
 
@@ -52,7 +86,9 @@ main{
   left: 0px;
   top: 0px;
   transition-duration:0.4s;
-  transition-timing-function:ease-in-out
+  transition-timing-function:ease-in-out;
+  box-shadow: 2px 2px 2px ;
+  z-index: 100;
 }
 .sideBar.active{
   width: 50px;
@@ -61,10 +97,11 @@ main{
   position: absolute;
   left: 0px;
   top: 0px;
+  z-index: 100;
 }
 
 .mainContainer{
-  background-color: blue;
+  /* background-color: blue; */
   display: block;
   height: 100vh;
   /* width: calc(100%-side); */
@@ -79,33 +116,45 @@ main{
 }
 
 .mainContainer.active{
-  background-color: blue;
+  /* background-color: blue; */
   display: block;
   height: 100vh;
-  /* width: calc(100%-side); */
-  /* margin: 50px; */
+
   width: 100%;
-  padding: 10px 0 0 40px;
+  /* padding: 10px 0 0 40px; */
   position:absolute;
   top:80px;
   left:50px;
 }
 .title{
-  
-  padding: 20px 30px;
+  display: flex;
+  /* justify-content: space-between; */
+  align-items: center;
+  padding: 20px 0px ;
 
+  
+}
+.newCreate{
+  display: block;
+  padding: 20px 20px 20px 20px;
+  margin-right: 80px;
+  margin-left: auto;
+  background-color: aqua;
+  border-radius: 20%;
 }
 .backImage{
-margin: 60px;
-background-color: blueviolet;
+margin: 5px -5px 5px 5px;
+background-color: rgba(37, 98, 98,0.5);
 height:80% ;
 display: block;
 }
 
 .innerContainer{
-  background-color: rgb(37, 98, 98);
+
+  box-shadow: -2px -2px 1px ;
+
   display: block;
-  padding:50px ;
+  padding:50px 0px 0px 50px ;
   width: 90%;
   height: 80%;
   line-height: 1.5;
@@ -129,13 +178,13 @@ display: block;
   display: flex;
   justify-content:left;
   align-items:center;
-  border-bottom: 1px solid white;
+  border-bottom: 3px solid white;
 }
 .members{
   display: flex;
   justify-content:left;
   align-items: center;
-  border-bottom: 1px solid white;
+  border-bottom: 3px solid white;
 }
 .menuIcon{
   width: 40px;
