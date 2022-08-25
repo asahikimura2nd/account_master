@@ -107,7 +107,7 @@ class UserController extends Controller
         $attributes = $request ->all();
         // dd($attributes);
         $member = new User;
-        $member -> fill($attributes) -> save();
+        $member -> fill($attributes)->update();
         return redirect()->route('users')->with('member_success','再登録完了しました');
      }
 
@@ -146,7 +146,7 @@ class UserController extends Controller
      * 
      */
         public function form(){
-            return view('form');
+            return view('contacts.form');
     }
 
         public function confirm(TestRequest $request){
@@ -154,7 +154,7 @@ class UserController extends Controller
 
             // dd($forms);
             session()->put('forms', $forms);
-            return view('confirm',['forms'=>$forms]);
+            return view('contacts.confirm',['forms'=>$forms]);
         }
 
 
@@ -172,7 +172,7 @@ class UserController extends Controller
             // $content = $forms['content'];
             // Mail::send(new FormMail($company,$name,$tel,$email,$birth_date,$gender,$job,$content));
             
-        return view('send',['forms'=>$forms]);
+        return view('contacts.send',['forms'=>$forms]);
     }    
         
 }

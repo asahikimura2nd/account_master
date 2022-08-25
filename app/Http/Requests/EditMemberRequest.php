@@ -5,7 +5,7 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use App\Rules\postcode_check;
 use App\Rules\tel_check;
-
+use Illuminate\Validation\Rule;
 
 class EditMemberRequest extends FormRequest
 {
@@ -31,7 +31,7 @@ class EditMemberRequest extends FormRequest
         'user_company'=>'required|max:30',
         'user_name_katakana'=>'required|max:30',
         //重複なし→自分以外のメールアドレス以外
-        'user_email'=>'required|unique:users,user_email',
+        'user_email'=> ['required', Rule::unique('users')->ignore($this->id)],
         'user_password'=>'required|min:8',
 
         'user_tel'=>['required', new tel_check],

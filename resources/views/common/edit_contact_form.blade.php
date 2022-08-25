@@ -1,8 +1,16 @@
-@extends('common.layout')
-
-@section('title','会員登録')
-
-@section('content')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>お問い合わせ編集</title>
+    <script src="{{ asset('/js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('/css/signin.css') }}"> --}}
+</head>
+<body >
+  {{-- {{dd($editContact)}} --}}
   <h1>お問い合わせ編集</h1>
 
   {{-- @foreach ($errors->all() as $error)
@@ -43,4 +51,8 @@
       <input type="submit" value="登録する。">
 
   </form>
-@endsection
+
+
+</body>
+
+</html>

@@ -1,8 +1,16 @@
-@extends('common.layout')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ホーム</title>
+    <script src="{{ asset('/js/app.js') }}" defer></script>
+    <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('/css/signin.css') }}"> --}}
+</head>
+<body >
 
-@section('title','会員一覧')
-
-@section('content')
 
   <table>
     <thead>
@@ -24,7 +32,13 @@
             <pre>
             @endforeach
         </td>
-
+        {{-- <td>    
+          @foreach ($members as $member)
+            <pre>
+            {{$member->user_name}}
+            <pre>
+            @endforeach
+        </td> --}}
         <td>    
           @foreach ($members as $member)
             <pre>
@@ -63,4 +77,7 @@
       </tr>
     </tbody>
   </table>
-@endsection
+
+</body>
+
+</html>
