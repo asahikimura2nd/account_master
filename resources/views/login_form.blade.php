@@ -49,12 +49,12 @@
   <div>{{session('logout')}}</div>
   @endif
         <p class="mt-5 mb-3 text-muted">&copy; 2017-2018</p>
-  </form>
-  <br>
-      {{-- 管理者登録画面 --}}
+              {{-- 管理者登録画面 --}}
       <a href="{{route('showRegister')}}">新規登録</a>
 
-  
+  </form>
+
+
 
 </body>
 </html>

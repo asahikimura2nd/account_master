@@ -22,7 +22,9 @@
         <td>    
           @foreach ($contacts as $contact)
             <pre>
-            <a href="{{ route('showEditContact',['contact_id' => $contact->contact_id]) }}">{{$contact->contact_id}}</a>
+
+            <a href="{{ route('showEditContact',['contact_id' => $contact->contact_id]) }}">
+              <img class="edit" src="{{asset('images/pen.svg')}}" alt="members" class="membersIcon"></a>
             <pre>
             @endforeach
         </td>

@@ -55,7 +55,7 @@
       <div class="backImage">
 
           <div class="innerContainer">
-            @yield('content')  
+            <div>@yield('content')  </div>
           </div>
           
       </div>

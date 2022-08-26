@@ -1,8 +1,9 @@
 @extends('common.layout')
+<link rel="stylesheet" href="home.css">
 
 @section('title','ホーム')
 @section('main','Home')
-
+@yield('content')  
 @section('newCreate')
 <div><a href="{{route('showUser')}}">新規作成</a></div>
 @endsection
