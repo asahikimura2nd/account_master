@@ -126,7 +126,9 @@ return [
     'uuid'                 => ':attributeに有効なUUIDを指定してください。',
     
     //追記
-    'user_postcode'        => ':attributeはハイフンあり半角英数字で入力してください。',
+    'member_postcode'        => ':attributeはハイフンあり半角英数字で入力してください。',
+    'member_email'             => ':attributeには、有効なメールアドレスを指定してください。',
+    'member_tel'             => ':attributeはハイフンあり半角英数字で入力してください。',
     'user_tel'             => ':attributeはハイフンあり半角英数字で入力してください。',
 
     /*
@@ -161,17 +163,18 @@ return [
         'admin_email'=>'メールアドレス',
         'password'=>'パスワード',
         
-        'user_company'=>'会社名',
-        'user_name_katakana'=>'フリガナ', 
-        'user_email'=>'メールアドレス',
-        'user_password'=>'パスワード',
-        'user_tel' =>'電話番号',
-        'user_postcode'=>'郵便番号', 
-        'user_prefectures'=>'都道府県',
-        'user_city'=>'市区町村',
-        'user_address_and_building'=>'番号・アパート名',
+        'member_company'=>'会社名',
+        'member_name_katakana'=>'フリガナ', 
+        'member_email'=>'メールアドレス',
+        'member_password'=>'パスワード',
+        'member_tel' =>'電話番号',
+        'member_postcode'=>'郵便番号', 
+        'member_prefectures'=>'都道府県',
+        'member_city'=>'市区町村',
+        'member_address_and_building'=>'番号・アパート名',
         'content'=>'備考欄',
-
+        'user_tel'             => '電話番号',
+        
 
 
     ],

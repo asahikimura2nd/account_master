@@ -11,7 +11,7 @@
   <form action="{{route('contactEdit')}}" method="POST">
     @csrf
     ステータス
-      <input type="hidden" name="contact_id" value="{{$editContact->contact_id}}">
+      <input type="hidden" name="user_id" value="{{$editContact->user_id}}">
      {{-- {{dd($editContact->contact_id)}}; --}}
       <select name="status">
         <option value="未対応" @if(old('status')==="未対応") selected @endif>未対応</option>
@@ -28,17 +28,17 @@
       </label>
       <br>
       お問い合わせ情報
-      氏名：{{$editContact->name}}
+      氏名：{{$editContact->user_name}}
       <br>
-      電話番号：{{$editContact->tel}}
+      電話番号：{{$editContact->user_tel}}
       <br>
-      メールアドレス：{{$editContact->email}}
+      メールアドレス：{{$editContact->user_email}}
       <br>
-      生年月日：{{$editContact->birth_date}}
+      生年月日：{{$editContact->user_birth_date}}
       <br>
-      性別：{{$editContact->gender}}
+      性別：{{$editContact->user_gender}}
       <br>
-      職業：{{$editContact->job}}
+      職業：{{$editContact->user_job}}
       <br>
       <input type="submit" value="登録する。">
 

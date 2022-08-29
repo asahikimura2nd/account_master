@@ -26,40 +26,33 @@ class User extends Authenticatable
         'admin_email',
         'password',
         //会員一覧
-        'user_id',
-        'user_name',
-        'user_email',
-        'user_tel',
-        'user_prefectures',
-        'user_city',
-        'user_address_and_building',
+        'member_id',
+        'member_name',
+        'member_email',
+        'member_tel',
+        'member_prefectures',
+        'member_city',
+        'member_address_and_building',
         //詳細
-        'user_company',
-        'user_name_katakana',
-        'user_password',
-        'user_postcode',
-        'user_content',
+        'member_company',
+        'member_name_katakana',
+        'member_password',
+        'member_postcode',
+        'member_content',
         //対応状況
         'status',
         //お問い合わせ備考
         'remarks',
+        'member_id'
 
-        /**
-         * 
-         * お問い合わせ側(user)
-         * 
-         */
-        'contact_id',
-        'company',
-        'name',
-        'tel',
-        'email',
-        'birth_date',
-        'gender',
-        'job',
-        'content'
+
     ];
 
+    // https://qiita.com/naoya-11/items/3d9f04f661a572020df0
+    //Contactモデルと紐づけ
+    // public function contact(){
+    //     return $this->hasOne(Contact::class,'contact_id');
+    // }
 
     /**
      * The attributes that should be hidden for serialization.
