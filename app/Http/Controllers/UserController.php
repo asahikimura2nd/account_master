@@ -104,7 +104,8 @@ class UserController extends Controller
         return view('user_edit_form',['editMember'=> $editMember]);
     }
     //会員登録処理(編集)
-     public function editUser(EditMemberRequest $request){
+    // https://shishido.dev/laravel-unique-validation/
+     public function editUser(EditMemberRequest $request,int $id){
         $attributes = $request ->all();
         // dd($attributes);
         $member = new User;

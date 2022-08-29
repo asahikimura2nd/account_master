@@ -48,8 +48,8 @@
         <input type="text" name="member_address_and_building" id="member_address_and_building" value="{{ old('member_address_and_building')}}">
       </label>
       <br>
-      <label for="content">備考欄：必須<br>
-        <textarea name="content" id="content" cols="30" rows="10">{{ old('content') }}</textarea>
+      <label for="member_content">備考欄：必須<br>
+        <textarea name="member_content" id="member_content" cols="30" rows="10">{{ old('member_content') }}</textarea>
       </label>
       <br>
       <input type="submit" value="登録する。">
