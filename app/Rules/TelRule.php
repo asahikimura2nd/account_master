@@ -36,6 +36,6 @@ class TelRule implements Rule
      */
     public function message()
     {
-        return trans('validation.tel');
+        return trans('validation.user_tel');
     }
 }

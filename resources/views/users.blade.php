@@ -3,7 +3,10 @@
 @section('title','会員一覧')
 
 @section('content')
-
+  @if (session('member_success'))
+    {{session('member_success')}}
+  @endif
+  
   <table>
     <thead>
     <tr>
@@ -20,7 +23,7 @@
         <td>    
           @foreach ($members as $member)
             <pre>
-            <a href="{{ route('showEdit',['user_id' => $member->user_id]) }}">{{$member->user_id}}</a>
+            <a href="{{ route('showEdit',['member_id' => $member->member_id]) }}">{{$member->member_id}}</a>
             <pre>
             @endforeach
         </td>
@@ -28,35 +31,35 @@
         <td>    
           @foreach ($members as $member)
             <pre>
-            {{$member->user_email}}
+            {{$member->member_email}}
             <pre>
             @endforeach
         </td>
         <td>    
           @foreach ($members as $member)
             <pre>
-            {{$member->user_tel}}
+            {{$member->member_tel}}
             <pre>
             @endforeach
         </td>
         <td>    
           @foreach ($members as $member)
             <pre>
-            {{$member->user_prefectures}}
+            {{$member->member_prefectures}}
             <pre>
             @endforeach
         </td>
         <td>    
           @foreach ($members as $member)
             <pre>
-            {{$member->user_city}}
+            {{$member->member_city}}
             <pre>
             @endforeach
         </td>
         <td>    
           @foreach ($members as $member)
             <pre>
-            {{$member->user_address_and_building}}
+            {{$member->member_address_and_building}}
             <pre>
             @endforeach
         </td>

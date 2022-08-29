@@ -8,11 +8,12 @@ use App\Http\Requests\TestRequest;
 use App\Http\Requests\EditMemberRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
-
+use PhpParser\Node\Stmt\Foreach_;
 
 class UserController extends Controller
 {
@@ -96,9 +97,9 @@ class UserController extends Controller
     }
 
     //会員編集画面
-    public function showEdit($user_id){
-        // dd($user_id);
-        $editMember = User::where('user_id',$user_id)->first();
+    public function showEdit($member_id){
+        // dd($member_id);
+        $editMember = User::where('member_id',$member_id)->first();
         // dd($editMember);
         return view('user_edit_form',['editMember'=> $editMember]);
     }
@@ -108,6 +109,7 @@ class UserController extends Controller
         // dd($attributes);
         $member = new User;
         $member -> fill($attributes)->update();
+        dd($member);
         return redirect()->route('users')->with('member_success','再登録完了しました');
      }
 
@@ -115,8 +117,7 @@ class UserController extends Controller
     public function showContacts(){
         
         // https://readouble.com/laravel/6.x/ja/pagination.html
-        $contacts = User::where('contact_id','!=',null)->paginate(1);   
-         
+        $contacts = Contact::where('contact_id','!=',null)->paginate(1);   
         // dd($contacts);
         $contacts->withPath('/show/contacts/');
         
@@ -127,7 +128,7 @@ class UserController extends Controller
         //お問い合わせ編集画面
         public function showEditContact($contact_id){
             // dd($contact_id);
-            $editContact = User::where('contact_id',$contact_id)->first();
+            $editContact = Contact::where('contact_id',$contact_id)->first();
             // dd($editContact);
             
             return view('edit_contact_form',['editContact'=> $editContact]);
@@ -136,6 +137,7 @@ class UserController extends Controller
         public function contactEdit(Request $request){
             // dd($request);
             User::where('contact_id',$request->contact_id)->update(['remarks'=> $request->remarks,'status'=> $request->status]);
+            
             return redirect()->route('showContacts')->with('flash_message','変更を更新しました。');
         }
    
@@ -160,7 +162,7 @@ class UserController extends Controller
 
         public function send(){
             $forms = session()->get('forms');
-            $formData = new User;
+            $formData = new Contact;
             $formData->fill($forms)->save();
             // $company = $forms['company'];
             // $name = $forms['name'];

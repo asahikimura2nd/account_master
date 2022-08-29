@@ -7,49 +7,49 @@
   @foreach ($errors->all() as $error)
     <li>{{$error}}</li>
   @endforeach
-    <form action="{{route('user')}}" method="POST">
+    <form action="{{route('editUser')}}" method="POST">
       @csrf
-        <label for="user_company">会社名：必須<br>
-          <input type="text" name="user_company" id="user_company" value="{{ old('user_company',$editMember->user_company) }}">
+        <label for="member_company">会社名：必須<br>
+          <input type="text" name="member_company" id="member_company" value="{{ old('member_company',$editMember->member_company) }}">
         </label>
         <br>
-        <label for="user_name_katakana">フリガナ：必須<br>
-          <input type="text" name="user_name_katakana" id="user_name_katakana" value="{{ old('user_name_katakana',$editMember->user_name_katakana) }}">
+        <label for="member_name_katakana">フリガナ：必須<br>
+          <input type="text" name="member_name_katakana" id="member_name_katakana" value="{{ old('member_name_katakana',$editMember->member_name_katakana) }}">
         </label>
         <br>
-        <label for="user_email">メールアドレス：必須<br>
-          <input type="email" name="user_email" id="user_email" value="{{ old('user_email',$editMember->user_email) }}">
+        <label for="member_email">メールアドレス：必須<br>
+          <input type="email" name="member_email" id="member_email" value="{{ old('member_email',$editMember->member_email) }}">
         </label>
         <br>
         <label for="user_password">パスワード：必須<br>
-          <input type="password" name="user_password" id="user_password" value="{{ old('user_password',$editMember->user_password) }}" >
+          <input type="password" name="member_password" id="member_password" value="{{ old('member_password',$editMember->member_password) }}" >
         </label>
         <br>
-        <label for="user_tel">電話番号：必須<br>
-          <input type="text" name="user_tel" id="user_tel" value="{{ old('user_tel',$editMember->user_tel)}}">
+        <label for="member_tel">電話番号：必須<br>
+          <input type="text" name="member_tel" id="member_tel" value="{{ old('member_tel',$editMember->member_tel)}}">
         </label>
         <br>
-        <label for="user_postcode">郵便番号：必須<br>
-          <input type="text" name="user_postcode" id="user_postcode" value="{{ old('user_postcode',$editMember->user_postcode) }}">
+        <label for="member_postcode">郵便番号：必須<br>
+          <input type="text" name="member_postcode" id="member_postcode" value="{{ old('member_postcode',$editMember->member_postcode) }}">
         </label>
         <br>
-        <label for="user_prefectures">都道府県：必須<br>
-          <input type="text" name="user_prefectures" id="user_prefectures" value="{{ old('user_prefectures',$editMember->user_prefectures) }}">
+        <label for="member_prefectures">都道府県：必須<br>
+          <input type="text" name="member_prefectures" id="member_prefectures" value="{{ old('member_prefectures',$editMember->member_prefectures) }}">
         </label>
         <br>
-        <label for="user_city">市区町村：必須<br>
-          <input type="text" name="user_city" id="user_city" value="{{ old('user_city',$editMember->user_city) }}">
+        <label for="member_city">市区町村：必須<br>
+          <input type="text" name="member_city" id="member_city" value="{{ old('member_city',$editMember->member_city) }}">
         </label>
         <br>
-        <label for="user_address_and_building">番号・アパート：必須<br>
-          <input type="text" name="user_address_and_building" id="user_address_and_building" value="{{ old('user_address_and_building',$editMember->user_address_and_building)}}">
+        <label for="member_address_and_building">番号・アパート：必須<br>
+          <input type="text" name="member_address_and_building" id="member_address_and_building" value="{{ old('member_address_and_building',$editMember->member_address_and_building)}}">
         </label>
         <br>
-        <label for="content">備考欄：必須<br>
-          <textarea name="content" id="content" cols="30" rows="10">{{ old('content',$editMember->content) }}</textarea>
+        <label for="member_content">備考欄：必須<br>
+          <textarea name="member_content" id="member_content" cols="30" rows="10">{{ old('member_content',$editMember->member_content) }}</textarea>
         </label>
         <br>
-        <input type="submit" value="登録する。">
+        <input type="submit" value="再登録する。">
     </form>
 
 @endsection

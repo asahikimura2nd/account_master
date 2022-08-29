@@ -27,10 +27,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //運営側
-        Validator::extend('user_tel',[tel_check::class,'passes']);
-        Validator::extend('user_postcode',[postcode_check::class,'passes']);
+        Validator::extend('member_tel',[tel_check::class,'passes']);
+        Validator::extend('member_postcode',[postcode_check::class,'passes']);
         
         //お問い合わせ側
-        Validator::extend('tel', [App\Rules\TelRule::class,'passes']);
+        Validator::extend('user_tel', [App\Rules\TelRule::class,'passes']);
     }
 }

@@ -11,14 +11,14 @@
 
 <body>
 {{-- データの形で->演算子が使用できるか検討する。 --}}
-    <div>会社名:{{$forms['company']}}</div>
-    <div>氏名:{{$forms['name']}}</div>
-    <div>電話番号:{{$forms['tel']}}</div>
-    <div>メールアドレス:{{$forms['email']}}</div>
-    <div>生年月日:{{$forms['birth_date']}}<</div>
-    <div>性別:{{$forms['gender']}}<</div>
-    <div>職業:{{$forms['job']}}<</div>
-    <div>お問い合わせ内容:<br>{{$forms['content']}}<</div>
+    <div>会社名:{{$forms['user_company']}}</div>
+    <div>氏名:{{$forms['user_name']}}</div>
+    <div>電話番号:{{$forms['user_tel']}}</div>
+    <div>メールアドレス:{{$forms['user_email']}}</div>
+    <div>生年月日:{{$forms['user_birth_date']}}<</div>
+    <div>性別:{{$forms['user_gender']}}<</div>
+    <div>職業:{{$forms['user_job']}}<</div>
+    <div>お問い合わせ内容:<br>{{$forms['user_content']}}<</div>
     <a href="{{route('send')}}"><button type="button" class="btn btn-primary">送信する</button></a>
     <a href="{{route('form',$forms)}}"><button type="button" class="btn btn-primary">戻る</button></a>
     <script src="{{ mix('js/app.js') }}"></script>

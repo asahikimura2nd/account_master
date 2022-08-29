@@ -57,14 +57,14 @@ Route::group(['middleware'=>['auth']],function(){
     //登録処理
     Route::post('/user',[UserController::class,'user'])->name('user');
     //会員編集
-    Route::get('/show/edit/{user_id?}',[UserController::class,'showEdit'])->name('showEdit');
+    Route::get('/show/edit/{member_id?}',[UserController::class,'showEdit'])->name('showEdit');
      //再登録処理
      Route::post('/user/edit',[UserController::class,'editUser'])->name('editUser');
      //お問い合わせ一覧
      Route::get('/show/contacts',[UserController::class,'showContacts'])->name('showContacts');
     //お問い合わせ編集画面
-    Route::get('/show/edit/contact/{contact_id?}',[UserController::class,'showEditContact'])->name('showEditContact');
+    Route::get('/show/edit/contact/{user_id?}',[UserController::class,'showEditContact'])->name('showEditContact');
     });
     //編集処理
-    Route::post('contact/edit/{contact_id?}',[UserController::class,'contactEdit'])->name('contactEdit');
+    Route::post('contact/edit/{user_id?}',[UserController::class,'contactEdit'])->name('contactEdit');
     

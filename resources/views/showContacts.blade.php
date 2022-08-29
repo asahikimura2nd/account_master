@@ -36,22 +36,21 @@
         <td>
         @foreach ($contacts as $contact)
         <pre>
-          {{$contact->company}}
+          {{$contact->user_company}}
         <pre>
         @endforeach
         </td>
         <td>    
           @foreach ($contacts as $contact)
             <pre>
-            {{$contact->name}}
+            {{$contact->user_name}}
             <pre>
             @endforeach
         </td>
-       
         <td>    
           @foreach ($contacts as $contact)
             <pre>
-            {{$contact->tel}}
+            {{$contact->user_tel}}
           
             <pre>
             @endforeach
