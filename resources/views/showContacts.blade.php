@@ -23,7 +23,7 @@
           @foreach ($contacts as $contact)
             <pre>
 
-            <a href="{{ route('showEditContact',['user_id' => $contact->user_id]) }}">
+            <a href="{{ route('showEditContact',['user_random_id' => $contact->user_random_id]) }}">
               <img class="edit" src="{{asset('images/pen.svg')}}" alt="members" class="membersIcon"></a>
             <pre>
             @endforeach

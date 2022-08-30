@@ -43,11 +43,6 @@ class CreateUsersTable extends Migration
             //顧客お問い合わせ備考
             $table->string('remarks')->nullable();
 
-            // $table->foreign('contact_id')->references('contact_id')->on('contacts');
-            // foreign(フィールド) = このフィールドは下記を参照します
-            // references(フィールド) = 参照先のフィールド
-            // on(テーブル名) = 参照先のテーブル
-            // onDelete('cascade'); = 上記が削除されたら該当データも一緒に削除
             $table->timestamps();
 
         });

@@ -21,7 +21,8 @@ class CreateContactsTable extends Migration
              * 
              */
             $table->id();
-            $table->string('user_id')->nullable();
+            $table->bigInteger('user_id')->nullable()->unsigned();
+            $table->string('user_random_id')->nullable();
             $table->string('user_company',20)->nullable();
             $table->string('user_name',20)->nullable();
             $table->string('user_tel')->nullable(); //https://webukatu.com/questions/detail/ec2c60b8195ea2b4ac9901a24777d1cf/
@@ -30,6 +31,12 @@ class CreateContactsTable extends Migration
             $table->string('user_gender')->nullable();
             $table->string('user_job')->nullable();
             $table->string('user_content')->nullable();
+
+            // $table->foreign('user_id')->references('id')->on('users');
+            // foreign(フィールド) = このフィールドは下記を参照します
+            // references(フィールド) = 参照先のフィールド
+            // on(テーブル名) = 参照先のテーブル
+            // onDelete('cascade'); = 上記が削除されたら該当データも一緒に削除
             $table->timestamps();
 
 

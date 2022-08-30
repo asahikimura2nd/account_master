@@ -122,7 +122,7 @@ class UserController extends Controller
     public function showContacts(){
         
         // https://readouble.com/laravel/6.x/ja/pagination.html
-        $contacts = Contact::where('user_id','!=',null)->paginate(1);   
+        $contacts = User::where('user_id','!=',null)->paginate(1);   
         // dd($contacts);
         $contacts->withPath('/show/contacts/');
         // if($contacts->user_id === null){

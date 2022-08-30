@@ -13,7 +13,9 @@ class Contact extends Model
          * お問い合わせ側(user)
          * 
          */
-        protected $fillable =['user_id',
+        protected $fillable =[
+        'user_id',
+        'user_random_id',
         'user_company',
         'user_name',
         'user_tel',
@@ -23,7 +25,7 @@ class Contact extends Model
         'user_job',
         'user_content'];
     // 参照先モデル（User）への紐付け
-        // public function user(){
-        //     return $this->belongsTo(Contact::class,'contact_id');
-        // }
+        public function user(){
+            return $this->belongsTo(User::class);
+        }
 }

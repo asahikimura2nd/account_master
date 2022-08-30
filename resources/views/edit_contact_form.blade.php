@@ -11,7 +11,6 @@
   <form action="{{route('contactEdit')}}" method="POST">
     @csrf
     ステータス
-      <input type="hidden" name="user_id" value="{{$editContact->user_id}}">
      {{-- {{dd($editContact->contact_id)}}; --}}
       <select name="status">
         <option value="未対応" @if(old('status')==="未対応") selected @endif>未対応</option>
@@ -21,7 +20,7 @@
     <br>
       お問い合わせ内容
       <br>
-      {{$editContact->content}}
+      {{$editContact->user_content}}
       <br>
       <label for="remarks">備考<br>
         <textarea name="remarks" id="remarks" cols="30" rows="10">{{old('remarks',$editContact->remarks)}}</textarea>  

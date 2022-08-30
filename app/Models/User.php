@@ -47,12 +47,13 @@ class User extends Authenticatable
 
 
     ];
-
+    // https://nogson2.hatenablog.com/entry/2019/09/29/213202
     // https://qiita.com/naoya-11/items/3d9f04f661a572020df0
+    // https://biz.addisteria.com/relation_exception/
     //Contactモデルと紐づけ
-    // public function contact(){
-    //     return $this->hasOne(Contact::class,'contact_id');
-    // }
+    public function contact(){
+        return $this->hasOne(Contact::class);
+    }
 
     /**
      * The attributes that should be hidden for serialization.
