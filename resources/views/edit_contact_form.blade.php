@@ -11,7 +11,6 @@
   <form action="{{route('contactEdit')}}" method="POST">
     @csrf
     ステータス
-     {{-- {{dd($editContact->contact_id)}}; --}}
       <select name="status">
         <option value="未対応" @if(old('status')==="未対応") selected @endif>未対応</option>
         <option value="対応中" @if(old('status')==="対応中") selected @endif>対応中</option>

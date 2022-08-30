@@ -63,8 +63,8 @@ Route::group(['middleware'=>['auth']],function(){
      //お問い合わせ一覧
      Route::get('/show/contacts',[UserController::class,'showContacts'])->name('showContacts');
     //お問い合わせ編集画面
-    Route::get('/show/edit/contact/{user_id?}',[UserController::class,'showEditContact'])->name('showEditContact');
+    Route::get('/show/edit/contact/{user_random_id?}',[UserController::class,'showEditContact'])->name('showEditContact');
     });
     //編集処理
-    Route::post('contact/edit/{user_id?}',[UserController::class,'contactEdit'])->name('contactEdit');
+    Route::post('contact/edit',[UserController::class,'contactEdit'])->name('contactEdit');
     

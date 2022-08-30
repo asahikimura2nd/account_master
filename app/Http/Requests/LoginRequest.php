@@ -26,6 +26,7 @@ class LoginRequest extends FormRequest
         return [
             'admin_email'=>'required|max:255',
             'password'=>'required',
+
             // 'confirmPassword' => 'required|same:password'
         ];
     }

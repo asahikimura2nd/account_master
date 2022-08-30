@@ -22,9 +22,10 @@
         <td>    
           @foreach ($contacts as $contact)
             <pre>
-
+              {{-- <img class="edit" src="{{asset('images/pen.svg')}}" alt="membersIcon" class="membersIcon"> --}}
             <a href="{{ route('showEditContact',['user_random_id' => $contact->user_random_id]) }}">
-              <img class="edit" src="{{asset('images/pen.svg')}}" alt="members" class="membersIcon"></a>
+              {{ route('showEditContact',['user_random_id' => $contact->user_random_id]) }}
+              </a>
             <pre>
             @endforeach
         </td>
@@ -32,6 +33,9 @@
           @foreach ($contacts as $contact)
             <pre>
               {{$contact->status}}
+              @if($contact->status===null)
+                未対応
+              @endif
             <pre>
             @endforeach
         </td>
