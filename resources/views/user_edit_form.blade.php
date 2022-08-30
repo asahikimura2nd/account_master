@@ -9,6 +9,8 @@
   @endforeach
     <form action="{{route('editUser')}}" method="POST">
       @csrf
+      <input type="hidden" name="member_id" value="{{$editMember->member_id}}">
+      {{-- {{dd($editMember->member_id)}} --}}
         <label for="member_company">会社名：必須<br>
           <input type="text" name="member_company" id="member_company" value="{{ old('member_company',$editMember->member_company) }}">
         </label>

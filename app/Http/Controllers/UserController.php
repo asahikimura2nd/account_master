@@ -104,13 +104,17 @@ class UserController extends Controller
         return view('user_edit_form',['editMember'=> $editMember]);
     }
     //会員登録処理(編集)
-    // https://shishido.dev/laravel-unique-validation/
-     public function editUser(EditMemberRequest $request,int $id){
-        $attributes = $request ->all();
+    
+     public function editUser(EditMemberRequest $request){
+        // https://qiita.com/sola-msr/items/fac931c72e1c46ae5f0f
+        $member = User::where('member_id',$request->member_id)->first();
+        // dd($member);
+        $member-> update();
+        //  dd($request->member_id);
+        // $attributes = $request ->all();
         // dd($attributes);
-        $member = new User;
-        $member -> fill($attributes)->update();
-        dd($member);
+        // $member = new User;
+        // $member -> fill($attributes)->save();
         return redirect()->route('users')->with('member_success','再登録完了しました');
      }
 
@@ -118,20 +122,24 @@ class UserController extends Controller
     public function showContacts(){
         
         // https://readouble.com/laravel/6.x/ja/pagination.html
-        $contacts = Contact::where('contact_id','!=',null)->paginate(1);   
+        $contacts = Contact::where('user_id','!=',null)->paginate(1);   
         // dd($contacts);
         $contacts->withPath('/show/contacts/');
+        // if($contacts->user_id === null){
+        //     $status_value = new User;
+        //     $status_value->fill(['status'=>'未対応'])->save(); 
+        // }
         
         return view('showContacts',['contacts'=>$contacts]);
         }
         
         
         //お問い合わせ編集画面
-        public function showEditContact($contact_id){
-            // dd($contact_id);
-            $editContact = Contact::where('contact_id',$contact_id)->first();
+        public function showEditContact($user_id){
+            // dd($user_id);
+            $editContact = Contact::where('user_id',$user_id)->first();
             // dd($editContact);
-            
+
             return view('edit_contact_form',['editContact'=> $editContact]);
         }
         //お問い合わせ編集処理

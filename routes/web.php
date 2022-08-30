@@ -59,7 +59,7 @@ Route::group(['middleware'=>['auth']],function(){
     //会員編集
     Route::get('/show/edit/{member_id?}',[UserController::class,'showEdit'])->name('showEdit');
      //再登録処理
-     Route::post('/user/edit',[UserController::class,'editUser'])->name('editUser');
+     Route::post('/user/edit/{member_id?}',[UserController::class,'editUser'])->name('editUser');
      //お問い合わせ一覧
      Route::get('/show/contacts',[UserController::class,'showContacts'])->name('showContacts');
     //お問い合わせ編集画面
