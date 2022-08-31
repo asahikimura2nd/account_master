@@ -25,7 +25,7 @@ class Contact extends Model
         'user_job',
         'user_content'];
     // 参照先モデル（User）への紐付け
-        public function user(){
-            return $this->belongsTo(User::class);
+        public function users(){
+            return $this->hasMany(User::class);
         }
 }

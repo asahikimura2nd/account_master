@@ -42,7 +42,6 @@ class CreateUsersTable extends Migration
             $table->string('status')->nullable();
             //顧客お問い合わせ備考
             $table->string('remarks')->nullable();
-
             $table->timestamps();
 
         });

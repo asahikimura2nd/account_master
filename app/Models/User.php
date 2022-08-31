@@ -26,7 +26,7 @@ class User extends Authenticatable
         'admin_email',
         'password',
         //会員一覧
-        'member_id',
+        // 'member_id',
         'member_name',
         'member_email',
         'member_tel',
@@ -43,16 +43,17 @@ class User extends Authenticatable
         'status',
         //お問い合わせ備考
         'remarks',
-        'member_id'
+        'contact_id'
 
 
     ];
     // https://nogson2.hatenablog.com/entry/2019/09/29/213202
     // https://qiita.com/naoya-11/items/3d9f04f661a572020df0
     // https://biz.addisteria.com/relation_exception/
+    
     //Contactモデルと紐づけ
-    public function contact(){
-        return $this->hasOne(Contact::class);
+    public function contacts(){
+        return $this->belongsTo(Contact::class,'user_id');
     }
 
     /**

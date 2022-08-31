@@ -137,7 +137,6 @@ class UserController extends Controller
 
     //お問い合わせ一覧画面
     public function showContacts(){
-        
         // https://readouble.com/laravel/6.x/ja/pagination.html
         $contacts = Contact::where('user_random_id','!=',null)->paginate(1);   
         // dd($contacts);
@@ -153,9 +152,12 @@ class UserController extends Controller
         
         //お問い合わせ編集画面
         public function showEditContact($user_random_id){
-            // dd($user_random_id);
-            $editContact = Contact::where('user_random_id',$user_random_id)->first();
-            // dd($editContact);
+
+            $editContact = Contact::find(1);
+            $editContact->users()->user_id;
+            dd($editContact);
+            // $editContact = User->user_name->member_name;
+            // ddd($editContact);
 
             return view('edit_contact_form',['editContact'=> $editContact]);
         }

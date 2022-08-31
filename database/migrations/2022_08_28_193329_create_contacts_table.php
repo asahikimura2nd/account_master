@@ -21,7 +21,6 @@ class CreateContactsTable extends Migration
              * 
              */
             $table->id();
-            $table->bigInteger('user_id')->nullable()->unsigned();
             $table->string('user_random_id')->nullable();
             $table->string('user_company',20)->nullable();
             $table->string('user_name',20)->nullable();
@@ -31,6 +30,9 @@ class CreateContactsTable extends Migration
             $table->string('user_gender')->nullable();
             $table->string('user_job')->nullable();
             $table->string('user_content')->nullable();
+
+            $table->unsignedBigInteger('user_id')->default(1);
+            // $table->foreign('user_id')->references('id')->on('users');
 
             // $table->foreign('user_id')->references('id')->on('users');
             // foreign(フィールド) = このフィールドは下記を参照します
