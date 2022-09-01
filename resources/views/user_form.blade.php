@@ -11,7 +11,7 @@
 @endforeach
   <form action="{{route('user')}}" method="POST">
     @csrf
-    <input type="hidden" name="member_id" value="{{Str::random(30);}}">
+    <input type="hidden" name="member_id" value="{{Str::random(30)}}">
       <label for="member_company">会社名：必須<br>
         <input type="text" name="member_company" id="member_company" value="{{ old('member_company') }}">
       </label>
@@ -25,15 +25,15 @@
       </label>
       <br>
       <label for="member_password">パスワード：必須<br>
-        <input type="password" name="member_password" id="member_password" value="{{ old('member_password') }}" >
+        <input type="password" name="member_password" id="member_password" value="{{ old('member_password') }}" placeholder="8桁以上" >
       </label>
       <br>
       <label for="member_tel">電話番号：必須<br>
-        <input type="text" name="member_tel" id="member_tel" value="{{ old('member_tel')}}">
+        <input type="text" name="member_tel" id="member_tel" value="{{ old('member_tel')}}" placeholder="000-0000-0000">
       </label>
       <br>
       <label for="member_postcode">郵便番号：必須<br>
-        <input type="text" name="member_postcode" id="member_postcode" value="{{ old('member_postcode') }}">
+        <input type="text" name="member_postcode" id="member_postcode" value="{{ old('member_postcode') }}" placeholder="000-0000">
       </label>
       <br>
       <label for="member_prefectures">都道府県：必須<br>

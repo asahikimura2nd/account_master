@@ -16,7 +16,7 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
 
-            //管理者
+            //管理者（主）
             // $table->string('name',100)->nullable();
             $table->string('admin_email')->unique()->nullable();
             // $table->timestamp('email_verified_at')->nullable();
@@ -42,7 +42,6 @@ class CreateUsersTable extends Migration
             $table->string('status')->nullable();
             //顧客お問い合わせ備考
             $table->string('remarks')->nullable();
-
             $table->timestamps();
 
         });

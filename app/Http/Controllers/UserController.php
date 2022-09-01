@@ -9,27 +9,29 @@ use App\Http\Requests\EditMemberRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Contact;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Laravel\Ui\Presets\React;
 use PhpParser\Node\Stmt\Foreach_;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
     public function showLogin(){
-    
-        // dd($members);
+        
         return view('login_form');
 
     }
     
     public function login(LoginRequest $request ){
+        // dd($request->all());
         $credentials = $request->only('admin_email','password');
-    
         if (Auth::attempt(($credentials))){
             $request->session()->regenerate();
             //認証成功時にセッションを返す 二回以上のリダイレクト回避
+            
             return redirect()->route('home');
             // ->with('login_success','ログインが成功しました');
         }
@@ -72,13 +74,29 @@ class UserController extends Controller
      }
         //ホーム
      public function home(){
-        return view('home');
+
+        $dataCount = User::where('member_id',null)->get();
+        // dd($dataCount -> count());
+        if($dataCount -> count() <= 0){
+
+            return view('home');
+        } else { 
+            // dd(User::where('member_id',null)->first());
+            $admin = User::where('member_id',null)->first();   
+            $admin->member_id = Str::random(30);
+            $admin->member_email = $admin->admin_email;
+            $admin->member_password = $admin->password;
+            // dd($admin);
+            $admin->update();
+            return redirect()-> route('showEdit',['member_id'=> $admin->member_id]) ;
+        }
+
+        
     }
         // 会員一覧画面
     public function users(){
         $members = DB::table('users')->get();
-        // dd($members);
-
+        
     return view('users',["members"=> $members]);
     }
    
@@ -92,7 +110,8 @@ class UserController extends Controller
         $attributes = $request ->all();
         // dd($attributes);
         $member = new User;
-        $member -> fill($attributes) -> save();
+        $member -> fill($attributes);
+        $member -> save();
         return redirect()->route('users')->with('member_success','登録完了しました');
     }
 
@@ -108,46 +127,39 @@ class UserController extends Controller
      public function editUser(EditMemberRequest $request){
         // https://qiita.com/sola-msr/items/fac931c72e1c46ae5f0f
         $member = User::where('member_id',$request->member_id)->first();
-        // dd($member);
-        $member-> update();
-        //  dd($request->member_id);
-        // $attributes = $request ->all();
-        // dd($attributes);
-        // $member = new User;
-        // $member -> fill($attributes)->save();
+     
+        $member-> update($request->all());
         return redirect()->route('users')->with('member_success','再登録完了しました');
      }
 
     //お問い合わせ一覧画面
     public function showContacts(){
-        
         // https://readouble.com/laravel/6.x/ja/pagination.html
-        $contacts = User::where('user_id','!=',null)->paginate(1);   
+        $contacts = Contact::where('user_random_id','!=',null)->paginate(1);   
         // dd($contacts);
-        $contacts->withPath('/show/contacts/');
-        // if($contacts->user_id === null){
-        //     $status_value = new User;
-        //     $status_value->fill(['status'=>'未対応'])->save(); 
-        // }
-        
+        $contacts->withPath('/show/contacts/');        
         return view('showContacts',['contacts'=>$contacts]);
         }
         
         
         //お問い合わせ編集画面
-        public function showEditContact($user_id){
-            // dd($user_id);
-            $editContact = Contact::where('user_id',$user_id)->first();
-            // dd($editContact);
+        public function showEditContact($user_random_id){
+          
 
+            $editContact = Contact::where('user_random_id',$user_random_id)->first();
             return view('edit_contact_form',['editContact'=> $editContact]);
         }
+        // https://progtext.net/programming/laravel-user-data/
         //お問い合わせ編集処理
         public function contactEdit(Request $request){
-            // dd($request);
-            User::where('contact_id',$request->contact_id)->update(['remarks'=> $request->remarks,'status'=> $request->status]);
-            
-            return redirect()->route('showContacts')->with('flash_message','変更を更新しました。');
+            $contacts = User::find(Auth::id());
+            //代入
+            $contacts->remarks = $request->remarks;
+            $contacts->status = $request->status;
+            //保存
+            // dd($thisAuthInfomation);
+            $contacts->update();
+            return redirect()->route('showContacts',['contacts'=>$contacts])->with('flash_message','変更を更新しました。');
         }
    
         /**

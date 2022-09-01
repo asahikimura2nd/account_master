@@ -16,6 +16,7 @@
 
     <form class="form-signin" method="POST" action="{{route('register')}}">
       @csrf
+        <input type="hidden" name="member_id" value="{{null}}">
         <h1 class="h3 mb-3 font-weight-normal">管理者登録フォーム</h1>
         <label for="inputEmail" class="sr-only">Email address</label>
         <input type="email" id="inputEmail" name="admin_email" class="form-control" placeholder="Email address" required autofocus>

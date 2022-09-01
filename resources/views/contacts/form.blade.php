@@ -39,7 +39,7 @@
          <div class="row">
             <div class="col-md-2 border border-dark ">必須</div>
             <div class="col-md-4 border border-dark">電話番号</div>
-            <div class="col-md-6 border border-dark"><input type="text" name="user_tel" id="user_name">
+            <div class="col-md-6 border border-dark"><input type="text" name="user_tel" id="user_name" placeholder="000-0000-0000">
                 @if($errors->has('user_tel'))
                 <div>{{$errors->first('user_tel')}}</div>
                 @endif
