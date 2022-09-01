@@ -24,15 +24,15 @@
         </label>
         <br>
         <label for="user_password">パスワード：必須<br>
-          <input type="password" name="member_password" id="member_password" value="{{ old('member_password',$editMember->member_password) }}" >
+          <input type="password" name="member_password" id="member_password" value="{{ old('member_password',$editMember->member_password) }} " placeholder="8桁以上" >
         </label>
         <br>
         <label for="member_tel">電話番号：必須<br>
-          <input type="text" name="member_tel" id="member_tel" value="{{ old('member_tel',$editMember->member_tel)}}">
+          <input type="text" name="member_tel" id="member_tel" value="{{ old('member_tel',$editMember->member_tel)}}" placeholder="000-0000-0000">
         </label>
         <br>
         <label for="member_postcode">郵便番号：必須<br>
-          <input type="text" name="member_postcode" id="member_postcode" value="{{ old('member_postcode',$editMember->member_postcode) }}">
+          <input type="text" name="member_postcode" id="member_postcode" value="{{ old('member_postcode',$editMember->member_postcode) }}" placeholder="000-0000">
         </label>
         <br>
         <label for="member_prefectures">都道府県：必須<br>

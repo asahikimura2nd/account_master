@@ -7,6 +7,8 @@
       {{ session('flash_message') }}
   @endif
 
+
+1
   <table>
     <thead>
     <tr>
@@ -31,6 +33,7 @@
         </td>
         <td>
           @foreach ($contacts as $contact)
+          {{dd($contact->status)}}
             <pre>
               {{$contact->status}}
               @if($contact->status===null)

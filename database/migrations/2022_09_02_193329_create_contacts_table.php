@@ -17,10 +17,18 @@ class CreateContactsTable extends Migration
             
                         /**
              * 
-             * お問い合わせ側(user)
+             * お問い合わせ側(user)従
              * 
              */
             $table->id();
+            //外部キー
+            $table->unsignedBigInteger('user_id')->nullable();
+            // $table->unsignedBigInteger('response_id')->nullable();
+            // $table->primary('user_id','response_id');
+            // 外部キー制約
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            // $table->foreign('response_id')->references('id')->on('responses')->onDelete('cascade');            
+
             $table->string('user_random_id')->nullable();
             $table->string('user_company',20)->nullable();
             $table->string('user_name',20)->nullable();
@@ -30,9 +38,12 @@ class CreateContactsTable extends Migration
             $table->string('user_gender')->nullable();
             $table->string('user_job')->nullable();
             $table->string('user_content')->nullable();
+          
 
-            $table->unsignedBigInteger('user_id')->default(1);
-            // $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('user_id')
+            //     ->references('id')
+            //     ->on('users')
+            //     ->onDelete('cascade');
 
             // $table->foreign('user_id')->references('id')->on('users');
             // foreign(フィールド) = このフィールドは下記を参照します

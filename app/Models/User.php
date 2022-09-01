@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Database\Factories\Administration\MemberFactory;
+use App\Models\Contact;
 
 class User extends Authenticatable
 {
@@ -26,7 +27,7 @@ class User extends Authenticatable
         'admin_email',
         'password',
         //会員一覧
-        // 'member_id',
+        'member_id',
         'member_name',
         'member_email',
         'member_tel',
@@ -42,18 +43,16 @@ class User extends Authenticatable
         //対応状況
         'status',
         //お問い合わせ備考
-        'remarks',
-        'contact_id'
-
-
+        'remarks'
     ];
+    
     // https://nogson2.hatenablog.com/entry/2019/09/29/213202
     // https://qiita.com/naoya-11/items/3d9f04f661a572020df0
     // https://biz.addisteria.com/relation_exception/
     
     //Contactモデルと紐づけ
     public function contacts(){
-        return $this->belongsTo(Contact::class,'user_id');
+        return $this->hasMany(Contact::class);
     }
 
     /**

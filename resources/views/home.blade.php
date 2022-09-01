@@ -9,6 +9,7 @@
 @endsection
 
 @section('content')
+
   <div class="item"><h2>会員登録</h2></div>
   <div><h2><a href="{{route('users')}}">会員一覧</a></h2></div>     
   {{-- <div>お問い合わせ一覧</div>

@@ -9,6 +9,7 @@ use App\Http\Requests\EditMemberRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Contact;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -109,7 +110,8 @@ class UserController extends Controller
         $attributes = $request ->all();
         // dd($attributes);
         $member = new User;
-        $member -> fill($attributes) -> save();
+        $member -> fill($attributes);
+        $member -> save();
         return redirect()->route('users')->with('member_success','登録完了しました');
     }
 
@@ -127,11 +129,6 @@ class UserController extends Controller
         $member = User::where('member_id',$request->member_id)->first();
      
         $member-> update($request->all());
-        //  dd($request->member_id);
-        // $attributes = $request ->all();
-        // dd($attributes);
-        // $member = new User;
-        // $member -> fill($attributes)->save();
         return redirect()->route('users')->with('member_success','再登録完了しました');
      }
 
@@ -140,33 +137,29 @@ class UserController extends Controller
         // https://readouble.com/laravel/6.x/ja/pagination.html
         $contacts = Contact::where('user_random_id','!=',null)->paginate(1);   
         // dd($contacts);
-        $contacts->withPath('/show/contacts/');
-        // if($contacts->user_id === null){
-        //     $status_value = new User;
-        //     $status_value->fill(['status'=>'未対応'])->save(); 
-        // }
-        
+        $contacts->withPath('/show/contacts/');        
         return view('showContacts',['contacts'=>$contacts]);
         }
         
         
         //お問い合わせ編集画面
         public function showEditContact($user_random_id){
+          
 
-            $editContact = Contact::find(1);
-            $editContact->users()->user_id;
-            dd($editContact);
-            // $editContact = User->user_name->member_name;
-            // ddd($editContact);
-
+            $editContact = Contact::where('user_random_id',$user_random_id)->first();
             return view('edit_contact_form',['editContact'=> $editContact]);
         }
+        // https://progtext.net/programming/laravel-user-data/
         //お問い合わせ編集処理
         public function contactEdit(Request $request){
-            dd($request->member_id);
-            User::where('member_id',$request->member_id)->update(['remarks'=> $request->remarks,'status'=> $request->status]);
-            
-            return redirect()->route('showContacts')->with('flash_message','変更を更新しました。');
+            $contacts = User::find(Auth::id());
+            //代入
+            $contacts->remarks = $request->remarks;
+            $contacts->status = $request->status;
+            //保存
+            // dd($thisAuthInfomation);
+            $contacts->update();
+            return redirect()->route('showContacts',['contacts'=>$contacts])->with('flash_message','変更を更新しました。');
         }
    
         /**
